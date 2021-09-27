@@ -1,11 +1,12 @@
 import React from 'react'
 import { View, Text,StyleSheet,TouchableOpacity } from 'react-native'
 
-export default function ListItem({item}) {
+export default function ListItem({item,deleteItem}) {
     return (
         <TouchableOpacity style={styles.listItem}>
         <View style={styles.listItemView}>
             <Text style={styles.listItemText}>{item.text}</Text>
+            <Text style={styles.delete} onPress={() => deleteItem(item.id)}>X</Text>
         </View>
         </TouchableOpacity>
     )
@@ -25,6 +26,10 @@ const styles = StyleSheet.create({
     },
     listItemText:{
         fontSize:18
+    },
+    delete:{
+        color:'red',
+        fontWeight:'bolder'
     }
 
 })
