@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import ListItem from './components/ListItem'
 import Header from './components/Header';
+import AddItem from './components/addItem';
 
 export default function App() {
 
@@ -20,9 +21,17 @@ export default function App() {
     })
   }
 
+
+  const addItem = (text) =>{
+    setItems(prevItems =>{
+      return [{id: uuidv4(), text},...prevItems]
+    })
+  }
+
   return (
     <View style={styles.container}>
       <Header title="Shopping List" />
+      <AddItem addItem={addItem} />
       <FlatList
         data={items}
         renderItem={({item}) => <ListItem  item={item} deleteItem={deleteItem} />}
